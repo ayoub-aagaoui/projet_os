@@ -1,0 +1,8 @@
+# test projet os
+# hello world
+
+P1 0 5
+P2 2 3
+
+P3 4 8
+P4 6 2
