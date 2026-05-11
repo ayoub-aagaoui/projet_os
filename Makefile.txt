@@ -1,0 +1,24 @@
+# Variables pour le compilateur et les options
+CC = gcc
+CFLAGS = -Wall -Wextra -pthread
+LDFLAGS = -lpthread
+
+# Cibles principales
+all: ordonnanceur serveur client
+
+# On compile l'ordonnanceur avec les politiques separees
+ordonnanceur: ordonnanceur.c politiques/politiques.c
+	$(CC) $(CFLAGS) -o ordonnanceur ordonnanceur.c politiques/politiques.c
+
+# --- PARTIE 2 : SMART FACTORY ---
+# Compilation du gestionnaire (serveur)
+serveur: serveur.c
+	$(CC) $(CFLAGS) -o serveur serveur.c $(LDFLAGS)
+
+# Compilation du bras robotique (client)
+client: client.c
+	$(CC) $(CFLAGS) -o client client.c $(LDFLAGS)
+
+# Nettoyage des fichiers binaires
+clean:
+	rm -f ordonnanceur serveur client *.o
