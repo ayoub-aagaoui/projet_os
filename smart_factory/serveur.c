@@ -4,8 +4,8 @@
 #include <pthread.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <time.h> igé
-#include "commun.h"
+#include <time.h> igÃ©
+#include "com.h"
 
 pthread_mutex_t outils[NB_MAX_OUTILS];
 
