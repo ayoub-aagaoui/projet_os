@@ -1,17 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "politiques/politiques.h"
+#include "politiques.h"
 
 int main(int argc, char *argv[]) {
     if(argc != 2) {
-        printf("Erreur : specifiez le fichier de config.\nUsage : ./ordonnanceur config.txt\n");
+        printf("Erreur ");
         return 1;
     }
 
     FILE *f = fopen(argv[1], "r");
     if(f == NULL) {
-        perror("Erreur d'ouverture du fichier");
+        perror("Erreur ");
         return 1;
     }
 
@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
     fclose(f);
 
     int choix;
-    printf("Choix de la politique :\n1. FIFO\n2. SJF\n3. Round-Robin\nVotre choix : ");
+    printf("Choix de la politique :\n1. FIFO\n2. SJF\n3. Round-Robin\n choix : ");
     scanf("%d", &choix);
 
     if(choix == 2) algorithme_sjf(liste, cpt);
