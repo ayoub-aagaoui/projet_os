@@ -3,13 +3,13 @@
 #include <pthread.h>
 #include <sys/socket.h>
 #include <arpa/inet.h>
-#include "commun.h"
+#include "com.h"
 
 int ma_socket;
 
 void* thread_reflexion(void* arg) {
     (void)arg;
-    printf("[Bras] Analyse de la tache...\n");
+
     sleep(1);
     return NULL;
 }
@@ -17,7 +17,6 @@ void* thread_reflexion(void* arg) {
 void* thread_reseau(void* arg) {
     (void)arg;
     TrameReseau demande = {1, 2, 5};
-    printf("[Bras] Envoi requete outils...\n");
     send(ma_socket, &demande, sizeof(TrameReseau), 0);
 
     int ack;
@@ -28,7 +27,7 @@ void* thread_reseau(void* arg) {
 
 void* thread_assemblage(void* arg) {
     (void)arg;
-    printf("[Bras] Assemblage en cours...\n");
+    printf("[Bras] Assemblage en cours\n");
     sleep(2);
 
     TrameReseau libere = {2, 2, 5};
