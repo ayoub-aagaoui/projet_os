@@ -2,17 +2,17 @@
 #include "politiques.h"
 
 void algorithme_fifo(Processus tab[], int nb_proc) {
-    printf("\n=== Execution FIFO ===\n");
+    printf("\n FIFO \n");
     int horloge = 0;
     for(int i = 0; i < nb_proc; i++) {
         if(horloge < tab[i].arrivee) horloge = tab[i].arrivee;
-        printf("[t=%d] %s tourne pour %d cycles\n", horloge, tab[i].nom, tab[i].temps_cpu);
+        printf("[t=%d] %s pour %d cycles\n", horloge, tab[i].nom, tab[i].temps_cpu);
         horloge += tab[i].temps_cpu;
     }
 }
 
 void algorithme_sjf(Processus tab[], int nb_proc) {
-    printf("\n=== Execution SJF ===\n");
+    printf("/n Execution SJF");
     int horloge = 0, finis = 0;
     int etat[100] = {0};
 
@@ -28,7 +28,7 @@ void algorithme_sjf(Processus tab[], int nb_proc) {
         }
 
         if(idx != -1) {
-            printf("[t=%d] %s tourne pour %d cycles\n", horloge, tab[idx].nom, tab[idx].temps_cpu);
+            printf("[t=%d] %s  pour %d cycles\n", horloge, tab[idx].nom, tab[idx].temps_cpu);
             horloge += tab[idx].temps_cpu;
             etat[idx] = 1;
             finis++;
@@ -37,7 +37,7 @@ void algorithme_sjf(Processus tab[], int nb_proc) {
 }
 
 void algorithme_rr(Processus tab[], int nb_proc, int quantum) {
-    printf("\n=== Execution Round-Robin (Quantum = %d) ===\n", quantum);
+    printf("\n Round-Robin (Quantum = %d) \n", quantum);
     int horloge = 0, finis = 0;
 
     for(int i = 0; i < nb_proc; i++) tab[i].temps_restant = tab[i].temps_cpu;
@@ -49,7 +49,7 @@ void algorithme_rr(Processus tab[], int nb_proc, int quantum) {
                 processeur_actif = 1;
                 int temps_execution = (tab[i].temps_restant > quantum) ? quantum : tab[i].temps_restant;
 
-                printf("[t=%d] %s tourne pour %d cycles\n", horloge, tab[i].nom, temps_execution);
+                printf("[t=%d] %s pour %d cycles\n", horloge, tab[i].nom, temps_execution);
                 horloge += temps_execution;
                 tab[i].temps_restant -= temps_execution;
 
