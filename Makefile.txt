@@ -6,12 +6,11 @@ LDFLAGS = -lpthread
 # Cibles principales
 all: ordonnanceur serveur client
 
-# On compile l'ordonnanceur avec les politiques separees
+# --- PARTIE 1 : ORDONNANCEUR ---
 ordonnanceur: ordonnanceur.c politiques/politiques.c
 	$(CC) $(CFLAGS) -o ordonnanceur ordonnanceur.c politiques/politiques.c
 
 # --- PARTIE 2 : SMART FACTORY ---
-# Compilation du gestionnaire (serveur)
 serveur: serveur.c
 	$(CC) $(CFLAGS) -o serveur serveur.c $(LDFLAGS)
 
